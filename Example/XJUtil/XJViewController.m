@@ -7,6 +7,7 @@
 //
 
 #import "XJViewController.h"
+#import <XJUtil/UIViewController+XJExtension.h>
 
 @interface XJViewController ()
 

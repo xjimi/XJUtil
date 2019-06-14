@@ -1,0 +1,6 @@
+framework module XJUtil {
+  umbrella header "XJUtil-umbrella.h"
+
+  export *
+  module * { export * }
+}

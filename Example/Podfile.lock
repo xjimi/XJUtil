@@ -1,0 +1,16 @@
+PODS:
+  - XJUtil (0.1.0)
+
+DEPENDENCIES:
+  - XJUtil (from `../`)
+
+EXTERNAL SOURCES:
+  XJUtil:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  XJUtil: d268c5aaa4428478b3442895c2c97281c95fffd6
+
+PODFILE CHECKSUM: a6d0537cb9f7807ec645cd9d15582eb637413bf4
+
+COCOAPODS: 1.7.1
