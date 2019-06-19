@@ -15,7 +15,6 @@
     BOOL    animate;
 }
 @property (nonatomic, strong, readwrite) UIViewController *currentViewController;
-@property (nonatomic, weak) UIScrollView *scrollView;
 
 // 用于记录子控制器view的frame，用于 scrollView 上的展示的位置
 @property (nonatomic, strong) NSMutableArray *childViewFrames;
@@ -27,7 +26,6 @@
 @property (nonatomic, strong) NSCache *memCache;
 // 收到内存警告的次数
 @property (nonatomic, assign) int memoryWarningCount;
-
 
 @end
 

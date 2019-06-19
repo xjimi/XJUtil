@@ -1,6 +1,6 @@
 {
   "name": "XJUtil",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "summary": "A short description of XJUtil.",
   "homepage": "https://github.com/xjimi/XJUtil",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/xjimi/XJUtil.git",
-    "tag": "0.1.0"
+    "tag": "0.1.1"
   },
   "platforms": {
     "ios": "9.0"

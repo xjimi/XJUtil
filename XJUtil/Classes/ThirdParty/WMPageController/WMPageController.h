@@ -109,6 +109,8 @@ typedef NS_ENUM(NSUInteger, WMPageControllerCachePolicy){
  */
 @property (nonatomic, assign) WMPageControllerCachePolicy cachePolicy;
 
+@property (nonatomic, weak) UIScrollView *scrollView;
+
 @property (nonatomic, weak) id <WMPageControllerDelegate> delegate;
 
 - (void)selectedIndex:(NSInteger)index currentIndex:(NSInteger)currentIndex;
