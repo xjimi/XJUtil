@@ -8,11 +8,16 @@
 
 #import "WMPageController.h"
 
-@interface WMPageController () < UIScrollViewDelegate > {
-    CGFloat viewHeight;
-    CGFloat viewWidth;
-    CGFloat targetX;
-    BOOL    animate;
+static NSString *const WMControllerDidAddToSuperViewNotification = @"WMControllerDidAddToSuperViewNotification";
+static NSString *const WMControllerDidFullyDisplayedNotification = @"WMControllerDidFullyDisplayedNotification";
+
+static NSInteger const kWMUndefinedIndex = -1;
+static NSInteger const kWMControllerCountUndefined = -1;
+@interface WMPageController () {
+    CGFloat _targetX;
+    CGRect  _contentViewFrame;
+    BOOL    _hasInited, _shouldNotScroll;
+    NSInteger _initializedIndex, _controllerCount, _markedSelectIndex;
 }
 @property (nonatomic, strong, readwrite) UIViewController *currentViewController;
 
@@ -24,8 +29,10 @@
 @property (nonatomic, strong) NSMutableDictionary *posRecords;
 // 用于缓存加载过的控制器
 @property (nonatomic, strong) NSCache *memCache;
+@property (nonatomic, strong) NSMutableDictionary *backgroundCache;
 // 收到内存警告的次数
 @property (nonatomic, assign) int memoryWarningCount;
+@property (nonatomic, readonly) NSInteger childControllersCount;
 
 @end
 
@@ -45,89 +52,213 @@
     return _displayVC;
 }
 
+- (NSMutableDictionary *)backgroundCache {
+    if (_backgroundCache == nil) {
+        _backgroundCache = [[NSMutableDictionary alloc] init];
+    }
+    return _backgroundCache;
+}
+
 #pragma mark - Public Methods
 
 - (instancetype)init {
     if (self = [super init]) {
-        [self setup];
+        [self wm_setup];
     }
     return self;
 }
 
-- (void)setCachePolicy:(WMPageControllerCachePolicy)cachePolicy {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self wm_setup];
+    }
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        [self wm_setup];
+    }
+    return self;
+}
+
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(wm_growCachePolicyAfterMemoryWarning) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(wm_growCachePolicyToHigh) object:nil];
+}
+
+#pragma mark - Data source
+- (NSInteger)childControllersCount
+{
+    if (_controllerCount == kWMControllerCountUndefined)
+    {
+        if ([self.dataSource respondsToSelector:@selector(numbersOfChildControllersInPageController:)]) {
+            _controllerCount = [self.dataSource numbersOfChildControllersInPageController:self];
+        } else {
+            _controllerCount = self.viewControllerClasses.count;
+        }
+    }
+    return _controllerCount;
+}
+
+- (UIViewController * _Nonnull)initializeViewControllerAtIndex:(NSInteger)index
+{
+    if ([self.dataSource respondsToSelector:@selector(pageController:viewControllerAtIndex:)]) {
+        return [self.dataSource pageController:self viewControllerAtIndex:index];
+    }
+    return [[self.viewControllerClasses[index] alloc] init];
+}
+
+- (void)setCachePolicy:(WMPageControllerCachePolicy)cachePolicy
+{
     _cachePolicy = cachePolicy;
     self.memCache.countLimit = _cachePolicy;
 }
 
-- (void)setSelectIndex:(int)selectIndex {
-    _selectIndex = selectIndex;
+- (void)setSelectIndex:(int)selectIndex
+{
+    _markedSelectIndex = selectIndex;
+    UIViewController *vc = [self.memCache objectForKey:@(selectIndex)];
+    if (!vc) {
+        vc = [self initializeViewControllerAtIndex:selectIndex];
+        [self.memCache setObject:vc forKey:@(selectIndex)];
+    }
+    self.currentViewController = vc;}
+
+- (void)setScrollEnable:(BOOL)scrollEnable
+{
+    _scrollEnable = scrollEnable;
+    
+    if (!self.scrollView) return;
+    self.scrollView.scrollEnabled = scrollEnable;
+}
+
+- (void)reloadData
+{
+    [self wm_clearDatas];
+    
+    if (!self.childControllersCount) return;
+    
+    [self wm_resetScrollView];
+    [self.memCache removeAllObjects];
+    [self wm_resetMenuView];
+    [self viewDidLayoutSubviews];
+    [self didEnterController:self.currentViewController atIndex:self.selectIndex];
 }
 
 #pragma mark - Private Methods
 
+- (void)wm_resetScrollView
+{
+    if (self.scrollView) {
+        [self.scrollView removeFromSuperview];
+    }
+    [self wm_addScrollView];
+    [self wm_addViewControllerAtIndex:self.selectIndex];
+    self.currentViewController = self.displayVC[@(self.selectIndex)];
+}
+
+- (void)wm_clearDatas
+{
+    _controllerCount = kWMControllerCountUndefined;
+    _hasInited = NO;
+    NSUInteger maxIndex = (self.childControllersCount - 1 > 0) ? (self.childControllersCount - 1) : 0;
+    _selectIndex = self.selectIndex < self.childControllersCount ? self.selectIndex : (int)maxIndex;
+    if (self.progressWidth > 0) { self.progressWidth = self.progressWidth; }
+    
+    NSArray *displayingViewControllers = self.displayVC.allValues;
+    for (UIViewController *vc in displayingViewControllers) {
+        [vc.view removeFromSuperview];
+        [vc willMoveToParentViewController:nil];
+        [vc removeFromParentViewController];
+    }
+    self.memoryWarningCount = 0;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(wm_growCachePolicyAfterMemoryWarning) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(wm_growCachePolicyToHigh) object:nil];
+    self.currentViewController = nil;
+    [self.posRecords removeAllObjects];
+    [self.displayVC removeAllObjects];
+}
+
 // 当子控制器init完成时发送通知
-- (void)postAddToSuperViewNotificationWithIndex:(NSInteger)index {
-    /*
-     if (!self.postNotification) return;
-     NSDictionary *info = @{
-     @"index":@(index),
-     @"title":self.titles[index]
-     };
-     [[NSNotificationCenter defaultCenter] postNotificationName:WMControllerDidAddToSuperViewNotification
-     object:info];*/
+- (void)wm_postAddToSuperViewNotificationWithIndex:(int)index {
+    if (!self.postNotification) return;
+    NSDictionary *info = @{
+                           @"index":@(index),
+                           @"title":[self titleAtIndex:index]
+                           };
+    [[NSNotificationCenter defaultCenter] postNotificationName:WMControllerDidAddToSuperViewNotification
+                                                        object:self
+                                                      userInfo:info];
 }
 
 // 当子控制器完全展示在user面前时发送通知
-- (void)postFullyDisplayedNotificationWithCurrentIndex:(int)index {
-    /*
-     if (!self.postNotification) return;
-     NSDictionary *info = @{
-     @"index":@(index),
-     @"title":self.titles[index]
-     };
-     [[NSNotificationCenter defaultCenter] postNotificationName:WMControllerDidFullyDisplayedNotification
-     object:info];*/
+- (void)wm_postFullyDisplayedNotificationWithCurrentIndex:(int)index {
+    if (!self.postNotification) return;
+    NSDictionary *info = @{
+                           @"index":@(index),
+                           @"title":[self titleAtIndex:index]
+                           };
+    [[NSNotificationCenter defaultCenter] postNotificationName:WMControllerDidFullyDisplayedNotification
+                                                        object:self
+                                                      userInfo:info];
 }
 
 // 初始化一些参数，在init中调用
-- (void)setup {
-    // cache
-    _pageAnimatable = YES;
-    self.memCache = [[NSCache alloc] init];
+- (void)wm_setup
+{
+    _memCache = [[NSCache alloc] init];
+    _initializedIndex = kWMUndefinedIndex;
+    _markedSelectIndex = kWMUndefinedIndex;
+    _controllerCount  = kWMControllerCountUndefined;
+    _scrollEnable = YES;
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.preloadPolicy = WMPageControllerPreloadPolicyNever;
+    self.cachePolicy = WMPageControllerCachePolicyNoLimit;
+    
+    self.delegate = self;
+    self.dataSource = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
-// 包括宽高，子控制器视图frame
-- (void)calculateSize
+// 包括宽高，子控制器视图 frame
+- (void)wm_calculateSize
 {
-    CGSize size = self.view.frame.size;
-    viewHeight = size.height;
-    viewWidth = size.width;
-    
-    // 重新计算各个控制器视图的宽高
+    _menuViewFrame = [self.dataSource pageController:self preferredFrameForMenuView:self.menuView];
+    _contentViewFrame = [self.dataSource pageController:self preferredFrameForContentView:self.scrollView];
     _childViewFrames = [NSMutableArray array];
-    
-    NSInteger pages = [self.delegate numberOfPagesInPageViewController:self];
-    for (int i = 0; i < pages; i++) {
-        CGRect frame = CGRectMake(i*viewWidth, 0, viewWidth, viewHeight);
+    for (int i = 0; i < self.childControllersCount; i++) {
+        CGRect frame = CGRectMake(i * _contentViewFrame.size.width, 0, _contentViewFrame.size.width, _contentViewFrame.size.height);
         [_childViewFrames addObject:[NSValue valueWithCGRect:frame]];
     }
 }
 
-- (void)addScrollView
+- (void)wm_addScrollView
 {
-    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    WMScrollView *scrollView = [[WMScrollView alloc] init];
+    scrollView.scrollsToTop = NO;
     scrollView.pagingEnabled = YES;
-    scrollView.backgroundColor = [UIColor clearColor];
+    scrollView.backgroundColor = [UIColor whiteColor];
     scrollView.delegate = self;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
-    scrollView.alwaysBounceHorizontal = NO;
-    scrollView.alwaysBounceVertical = NO;
-    scrollView.scrollsToTop = NO;
-    scrollView.directionalLockEnabled = YES;
-    scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    scrollView.bounces = self.bounces;
+    scrollView.scrollEnabled = self.scrollEnable;
+    if (@available(iOS 11.0, *)) {
+        scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
+    
+    if (!self.navigationController) return;
+    for (UIGestureRecognizer *gestureRecognizer in scrollView.gestureRecognizers) {
+        [gestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
+    }
 }
 
 - (void)layoutChildViewControllersCanAdd:(BOOL)canAdd
