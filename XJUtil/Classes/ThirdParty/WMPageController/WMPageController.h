@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-//#import "WMScrollView.h"
+#import "WMScrollView.h"
 
 @class WMPageController;
 
@@ -78,39 +78,37 @@ extern NSString *const WMControllerDidFullyDisplayedNotification;
  *
  *  @param pageController The parent controller (WMPageController)
  *  @param viewController The viewController first show up when scroll stop.
- *  @param info           A dictionary that includes some infos, such as: `index` / `title`
  */
-- (void)pageController:(WMPageController *)pageController lazyLoadViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info;
+- (void)pageController:(WMPageController *)pageController lazyLoadViewController:(__kindof UIViewController *)viewController atIndex:(NSInteger)index;
 
 /**
  *  Called when a viewController will be cached. You can clear some data if it's not reusable.
  *
  *  @param pageController The parent controller (WMPageController)
  *  @param viewController The viewController will be cached.
- *  @param info           A dictionary that includes some infos, such as: `index` / `title`
  */
-- (void)pageController:(WMPageController *)pageController willCachedViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info;
+
+- (void)pageController:(WMPageController *)pageController willCachedViewController:(__kindof UIViewController *)viewController atIndex:(NSInteger)index;
 
 /**
  *  Called when a viewController will be appear to user's sight. Do some preparatory methods if needed.
  *
  *  @param pageController The parent controller (WMPageController)
  *  @param viewController The viewController will appear.
- *  @param info           A dictionary that includes some infos, such as: `index` / `title`
  */
-- (void)pageController:(WMPageController *)pageController willEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info;
+
+- (void)pageController:(WMPageController *)pageController willEnterViewController:(__kindof UIViewController *)viewController atIndex:(NSInteger)index;
 
 /**
  *  Called when a viewController will fully displayed, that means, scrollView have stopped scrolling and the controller's view have entirely displayed.
  *
  *  @param pageController The parent controller (WMPageController)
  *  @param viewController The viewController entirely displayed.
- *  @param info           A dictionary that includes some infos, such as: `index` / `title`
  */
-- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController withInfo:(NSDictionary *)info;
+
+- (void)pageController:(WMPageController *)pageController didEnterViewController:(__kindof UIViewController *)viewController atIndex:(NSInteger)index;;
 
 - (void)pageController:(WMPageController *)pageController didScrollToOffset:(CGPoint)offset;
-- (void)pageController:(WMPageController *)pageController didScrollToPageAtIndex:(NSInteger)pageIndex;
 
 @end
 
@@ -136,9 +134,19 @@ extern NSString *const WMControllerDidFullyDisplayedNotification;
 
 @property (nonatomic, strong, readonly) UIViewController *currentViewController;
 
+/**
+ *  设置选中几号 item
+ *  To select item at index
+ */
+
+@property (nonatomic, assign) int selectIndex;
+
+@property (nonatomic, assign) BOOL pageAnimatable;
+
 /** Whether the controller can scroll. Default is YES. */
 @property (nonatomic, assign) BOOL scrollEnable;
 
+@property (nonatomic, assign) BOOL startDragging;
 
 /**
  *  是否发送在创建控制器或者视图完全展现在用户眼前时通知观察者，默认为不开启，如需利用通知请开启
@@ -163,7 +171,8 @@ extern NSString *const WMControllerDidFullyDisplayedNotification;
 /** Whether ContentView bounces */
 @property (nonatomic, assign) BOOL bounces;
 
-@property (nonatomic, weak) UIScrollView *scrollView;
+/** 内部容器 */
+@property (nonatomic, nullable, weak) WMScrollView *scrollView;
 
 
 - (void)selectedIndex:(NSInteger)index currentIndex:(NSInteger)currentIndex;
