@@ -624,6 +624,8 @@ static NSInteger const kWMControllerCountUndefined = -1;
     return CGRectZero;
 }
 
+#pragma mark - Customized
+
 - (void)selectedIndex:(NSInteger)index currentIndex:(NSInteger)currentIndex {
     if (!_hasInited) return;
     _selectIndex = (int)index;
@@ -641,8 +643,6 @@ static NSInteger const kWMControllerCountUndefined = -1;
 
     [self didEnterController:self.currentViewController atIndex:index];
 }
-
-#pragma mark - Customized
 
 - (void)reloadCurrentController
 {
