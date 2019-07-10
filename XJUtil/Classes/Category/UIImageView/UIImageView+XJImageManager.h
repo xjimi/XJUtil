@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^XJImageManagerCompletion)(UIImage *image);
 
-@interface UIImageView (ImageManager)
+@interface UIImageView (XJImageManager)
 
 - (void)xj_imageWithURL:(NSURL *)url;
 
