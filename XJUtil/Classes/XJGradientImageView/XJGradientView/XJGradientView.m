@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 xjimi. All rights reserved.
 //
 
-#import "GradientView.h"
+#import "XJGradientView.h"
 
-@interface GradientView ()
+@interface XJGradientView ()
 
 @end
 
-@implementation GradientView
+@implementation XJGradientView
 
 - (id)initWithFrame:(CGRect)frame
 {

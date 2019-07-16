@@ -8,6 +8,7 @@
 
 #import "XJViewController.h"
 #import <XJUtil/UIViewController+XJExtension.h>
+#import <XJUtil/XJGradientImageView.h>
 
 @interface XJViewController ()
 
@@ -19,6 +20,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,13 +7,13 @@
 //
 
 #import "XJGradientImageView.h"
-#import "GradientView.h"
+#import "XJGradientView.h"
 
 @interface XJGradientImageView ()
 
-@property (nonatomic, strong) GradientView *topGradientView;
-@property (nonatomic, strong) GradientView *bottomGradientView;
-@property (nonatomic, strong) GradientView *rightGradientView;
+@property (nonatomic, strong) XJGradientView *topGradientView;
+@property (nonatomic, strong) XJGradientView *bottomGradientView;
+@property (nonatomic, strong) XJGradientView *rightGradientView;
 @property (nonatomic, assign) CGFloat bottomPadding;
 @property (nonatomic, strong) UIView *bottomView;
 
@@ -38,31 +38,31 @@
     return self;
 }
 
-- (GradientView *)topGradientView
+- (XJGradientView *)topGradientView
 {
     if (!_topGradientView)
     {
-        GradientView *gradientView = [[GradientView alloc] initWithFrame:self.bounds];
+        XJGradientView *gradientView = [[XJGradientView alloc] initWithFrame:self.bounds];
         _topGradientView = gradientView;
     }
     return _topGradientView;
 }
 
-- (GradientView *)bottomGradientView
+- (XJGradientView *)bottomGradientView
 {
     if (!_bottomGradientView)
     {
-        GradientView *gradientView = [[GradientView alloc] initWithFrame:self.bounds];
+        XJGradientView *gradientView = [[XJGradientView alloc] initWithFrame:self.bounds];
         _bottomGradientView = gradientView;
     }
     return _bottomGradientView;
 }
 
-- (GradientView *)rightGradientView
+- (XJGradientView *)rightGradientView
 {
     if (!_rightGradientView)
     {
-        GradientView *gradientView = [[GradientView alloc] initWithFrame:self.bounds];
+        XJGradientView *gradientView = [[XJGradientView alloc] initWithFrame:self.bounds];
         _rightGradientView = gradientView;
     }
     return _rightGradientView;

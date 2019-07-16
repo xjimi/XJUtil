@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GradientView : UIView
+@interface XJGradientView : UIView
 
 @property (nonatomic, strong) NSArray *gradientColors;
 
