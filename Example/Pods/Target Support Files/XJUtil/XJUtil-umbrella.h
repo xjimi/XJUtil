@@ -25,6 +25,7 @@
 #import "NSMutableSet+XJSafe.h"
 #import "NSString+XJSafe.h"
 #import "XJCrashProtector.h"
+#import "XJGradientImageView.h"
 #import "XJTopWindow.h"
 
 FOUNDATION_EXPORT double XJUtilVersionNumber;
