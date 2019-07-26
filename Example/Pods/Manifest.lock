@@ -1,5 +1,5 @@
 PODS:
-  - XJUtil (0.1.4)
+  - XJUtil (0.1.5)
 
 DEPENDENCIES:
   - XJUtil (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  XJUtil: 0aa73f08c525d353784128438b7eecb0bb4d742e
+  XJUtil: 7d860fd5b34d5a1488d8d4a50e7d0755f8d6ab58
 
 PODFILE CHECKSUM: 87eda2292d40be848cd91d776bd83e0d6244f4be
 

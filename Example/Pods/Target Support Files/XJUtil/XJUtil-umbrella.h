@@ -20,6 +20,7 @@
 #import "UIWindow+XJVisible.h"
 #import "WMPageController.h"
 #import "WMScrollView.h"
+#import "XJBundleResource.h"
 #import "NSArray+XJSafe.h"
 #import "NSDictionary+XJSafe.h"
 #import "NSMutableSet+XJSafe.h"
