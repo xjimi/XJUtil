@@ -33,6 +33,8 @@
 		88D234E51FD5CD6A35A9BC62560BE284 /* XJGradientImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 196351480C2342009EAFD514CFD0C856 /* XJGradientImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B98376973C63CAB5464D3D5CAD28A6A /* UINavigationController+Portrait.m in Sources */ = {isa = PBXBuildFile; fileRef = EAD5352339B98050249FD45C2E6DD7CF /* UINavigationController+Portrait.m */; };
 		8E81A311479EDB78F912D4CA5B958FB8 /* NSString+XJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 131B524F09C0D3FD46887BF87A0F07DB /* NSString+XJExtension.m */; };
+		903359FB22FC16F8007F20CF /* UIViewController+XJStatusBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 903359F922FC16F8007F20CF /* UIViewController+XJStatusBar.h */; };
+		903359FC22FC16F8007F20CF /* UIViewController+XJStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 903359FA22FC16F8007F20CF /* UIViewController+XJStatusBar.m */; };
 		95B100D8EAE83F865079E84C2878495A /* XJGradientImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2794EDDF9B41C4F6FA9F26717D16861 /* XJGradientImageView.m */; };
 		9DBB7E0716FE240FC6CDBEA30A57D3F3 /* UIWindow+XJVisible.h in Headers */ = {isa = PBXBuildFile; fileRef = B5082668EC63D66A4F31390AD034A2A0 /* UIWindow+XJVisible.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A910FA94C6908B372BB950B2E4F11D24 /* UIViewController+XJExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = BE645A6B03D5865CA591DC7EC7EDB1D2 /* UIViewController+XJExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -83,7 +85,7 @@
 		0EB74E7FEBF3A5D9A59C0011421382B0 /* WMPageController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = WMPageController.m; sourceTree = "<group>"; };
 		131B524F09C0D3FD46887BF87A0F07DB /* NSString+XJExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+XJExtension.m"; sourceTree = "<group>"; };
 		196351480C2342009EAFD514CFD0C856 /* XJGradientImageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XJGradientImageView.h; sourceTree = "<group>"; };
-		29A526F63579B1BCED2E2FA2F26D6A19 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		29A526F63579B1BCED2E2FA2F26D6A19 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		303AFEA6AE14E6C7EEC10077F98B2FF1 /* Pods-XJUtil_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XJUtil_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		33DC8B6F648EC221797424ABCC7D4A7E /* NSDictionary+XJSafe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+XJSafe.m"; sourceTree = "<group>"; };
@@ -91,7 +93,7 @@
 		38112E4DB1A8A434EA7B82CB7876C6D1 /* NSArray+XJSafe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+XJSafe.m"; sourceTree = "<group>"; };
 		41FE27C209CD79340C55A74D8B198783 /* UIWindow+XJVisible.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+XJVisible.m"; sourceTree = "<group>"; };
 		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		47868CDECDC35615EB137CC2210E4AA1 /* Pods_XJUtil_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_XJUtil_Tests.framework; path = "Pods-XJUtil_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47868CDECDC35615EB137CC2210E4AA1 /* Pods_XJUtil_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XJUtil_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		492A792BFBE357CBC43B529639B8BFE4 /* NSMutableSet+XJSafe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSMutableSet+XJSafe.h"; sourceTree = "<group>"; };
 		4945CC02C5E6B4A012D06D68C5A4E8E5 /* XJUtil-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XJUtil-umbrella.h"; sourceTree = "<group>"; };
 		4FE85D8D63BDFE5945C2F614B7BDED1F /* NSMutableSet+XJSafe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSMutableSet+XJSafe.m"; sourceTree = "<group>"; };
@@ -106,10 +108,12 @@
 		837BEE150CB2AB34773A64B8E3E87497 /* UIImage+XJAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UIImage+XJAdditions.h"; sourceTree = "<group>"; };
 		86C0B2396CA7C59089DBDCFC5FF227E3 /* NSArray+XJEnumExtensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+XJEnumExtensions.m"; sourceTree = "<group>"; };
 		8CEA13A3B213564751F99F1F19F6468B /* XJUtil-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "XJUtil-prefix.pch"; sourceTree = "<group>"; };
+		903359F922FC16F8007F20CF /* UIViewController+XJStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XJStatusBar.h"; sourceTree = "<group>"; };
+		903359FA22FC16F8007F20CF /* UIViewController+XJStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XJStatusBar.m"; sourceTree = "<group>"; };
 		97B08D112DF0AC3820B614A1A65ED5F3 /* NSArray+XJEnumExtensions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+XJEnumExtensions.h"; sourceTree = "<group>"; };
 		993DEF29E42FED153A76B1E12AA1073A /* XJBundleResource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = XJBundleResource.h; sourceTree = "<group>"; };
 		9B71A8501D64FAFCFB5349A457C69A2D /* Pods-XJUtil_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XJUtil_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1617D1473DD1B4580B2D3A20B4D0BC7 /* Pods-XJUtil_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-XJUtil_Tests-dummy.m"; sourceTree = "<group>"; };
 		A6B6629FB33ACBBB74E8D3E85CE433B8 /* XJUtil-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "XJUtil-Info.plist"; sourceTree = "<group>"; };
 		A77258F6C0FCCDF68DF0E5BB49CE9FB9 /* XJUtil-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XJUtil-dummy.m"; sourceTree = "<group>"; };
@@ -128,10 +132,10 @@
 		BFB031B84DA6836AA6C4062FA44AB23D /* Pods-XJUtil_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XJUtil_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C2794EDDF9B41C4F6FA9F26717D16861 /* XJGradientImageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = XJGradientImageView.m; sourceTree = "<group>"; };
 		C2BD629DD3E2E1AC75109D34B03A558D /* UINavigationController+StatusBarStyle.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+StatusBarStyle.h"; sourceTree = "<group>"; };
-		C57ADDB13F377686D3E9559B1E21FE0B /* XJUtil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = XJUtil.framework; path = XJUtil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C57ADDB13F377686D3E9559B1E21FE0B /* XJUtil.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XJUtil.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE49B34D3715A6961FF72E7C1AC5ED67 /* WMScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = WMScrollView.h; sourceTree = "<group>"; };
 		CF82BFB9CA6B6BE02C90F7C93CD4521E /* Pods-XJUtil_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XJUtil_Example-Info.plist"; sourceTree = "<group>"; };
-		DABCB01B2185EEFFA0943BB49ACF4063 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		DABCB01B2185EEFFA0943BB49ACF4063 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E4A0897C60AC5029460B3E32A83EEEFD /* Pods-XJUtil_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-XJUtil_Tests-umbrella.h"; sourceTree = "<group>"; };
 		E5393FC4D738C0C70979BE9675201332 /* NSString+XJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSString+XJExtension.h"; sourceTree = "<group>"; };
 		E5FB048FE050C9F5A93BF5F45DAB9BF5 /* Pods-XJUtil_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XJUtil_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -141,8 +145,8 @@
 		F477130BDA4E1FE12B984CE22FBB31C4 /* NSArray+XJSafe.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSArray+XJSafe.h"; sourceTree = "<group>"; };
 		F5FA277C70AB47F565770839DE46C07D /* Pods-XJUtil_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-XJUtil_Tests.modulemap"; sourceTree = "<group>"; };
 		F6A76F996EC6B6775985C14203F6C211 /* XJUtil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XJUtil.xcconfig; sourceTree = "<group>"; };
-		F6C4650793768517EA519AE2AAB3F41B /* XJUtil.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = XJUtil.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		FF1961047629C982620EBF04C0742758 /* Pods_XJUtil_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_XJUtil_Example.framework; path = "Pods-XJUtil_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6C4650793768517EA519AE2AAB3F41B /* XJUtil.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = XJUtil.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FF1961047629C982620EBF04C0742758 /* Pods_XJUtil_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XJUtil_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +202,6 @@
 				97B08D112DF0AC3820B614A1A65ED5F3 /* NSArray+XJEnumExtensions.h */,
 				86C0B2396CA7C59089DBDCFC5FF227E3 /* NSArray+XJEnumExtensions.m */,
 			);
-			name = NSArray;
 			path = NSArray;
 			sourceTree = "<group>";
 		};
@@ -218,7 +221,6 @@
 				837BEE150CB2AB34773A64B8E3E87497 /* UIImage+XJAdditions.h */,
 				056083FBFC8C9FFF0A192F85F13AC503 /* UIImage+XJAdditions.m */,
 			);
-			name = UIImage;
 			path = UIImage;
 			sourceTree = "<group>";
 		};
@@ -241,8 +243,9 @@
 			children = (
 				BE645A6B03D5865CA591DC7EC7EDB1D2 /* UIViewController+XJExtension.h */,
 				81B8DF1364C3316CE3FBA10505F14DB9 /* UIViewController+XJExtension.m */,
+				903359F922FC16F8007F20CF /* UIViewController+XJStatusBar.h */,
+				903359FA22FC16F8007F20CF /* UIViewController+XJStatusBar.m */,
 			);
-			name = UIViewController;
 			path = UIViewController;
 			sourceTree = "<group>";
 		};
@@ -252,7 +255,6 @@
 				B5082668EC63D66A4F31390AD034A2A0 /* UIWindow+XJVisible.h */,
 				41FE27C209CD79340C55A74D8B198783 /* UIWindow+XJVisible.m */,
 			);
-			name = UIWindow;
 			path = UIWindow;
 			sourceTree = "<group>";
 		};
@@ -296,7 +298,6 @@
 				E5393FC4D738C0C70979BE9675201332 /* NSString+XJExtension.h */,
 				131B524F09C0D3FD46887BF87A0F07DB /* NSString+XJExtension.m */,
 			);
-			name = NSString;
 			path = NSString;
 			sourceTree = "<group>";
 		};
@@ -333,7 +334,6 @@
 				7C6B1BFC8BDA60CA4913874231DD0C76 /* XJGradientView.h */,
 				B0877F73E4C4ED09E9398339445BB813 /* XJGradientView.m */,
 			);
-			name = XJGradientView;
 			path = XJGradientView;
 			sourceTree = "<group>";
 		};
@@ -370,7 +370,6 @@
 				CE49B34D3715A6961FF72E7C1AC5ED67 /* WMScrollView.h */,
 				BA6F1FC9654DF363F9E51B9C50A27454 /* WMScrollView.m */,
 			);
-			name = WMPageController;
 			path = WMPageController;
 			sourceTree = "<group>";
 		};
@@ -397,7 +396,6 @@
 				0C6D33C15B5FD5D9D28F85F21F01C748 /* UIImageView+XJImageManager.h */,
 				BE0935491BEF251B5C5846E2926540B1 /* UIImageView+XJImageManager.m */,
 			);
-			name = UIImageView;
 			path = UIImageView;
 			sourceTree = "<group>";
 		};
@@ -464,7 +462,6 @@
 				C2BD629DD3E2E1AC75109D34B03A558D /* UINavigationController+StatusBarStyle.h */,
 				B36D64F2BC4B6ED8A0E307A4BF58E4CC /* UINavigationController+StatusBarStyle.m */,
 			);
-			name = UINavigationController;
 			path = UINavigationController;
 			sourceTree = "<group>";
 		};
@@ -489,6 +486,7 @@
 				F94DDA154B776E0EF433824259705300 /* NSMutableSet+XJSafe.h in Headers */,
 				C6DC9ADFD6C1E931115206429B940A4E /* NSString+XJExtension.h in Headers */,
 				41E578B1F153717915D78828DC876114 /* NSString+XJSafe.h in Headers */,
+				903359FB22FC16F8007F20CF /* UIViewController+XJStatusBar.h in Headers */,
 				4C941FC0B8D3B717B88B7F55B8BF0374 /* UIImage+XJAdditions.h in Headers */,
 				5613AAC794ED92EAAE2EA3C8734DAA20 /* UIImageView+XJImageManager.h in Headers */,
 				C559D94FDF1C260D21C50D6144A3AD4B /* UINavigationController+Portrait.h in Headers */,
@@ -658,6 +656,7 @@
 				410E5EF6CF4DB2A18722A67AAC73E930 /* UINavigationController+StatusBarStyle.m in Sources */,
 				E0F300B43720D5703C4B69C60AF70970 /* UIViewController+XJExtension.m in Sources */,
 				7067CC6F7757C6A55D0D730720069E61 /* UIWindow+XJVisible.m in Sources */,
+				903359FC22FC16F8007F20CF /* UIViewController+XJStatusBar.m in Sources */,
 				055B955A167DFCC3DED4C284CF30C697 /* WMPageController.m in Sources */,
 				E928257F868FB1B704541FC3937D650F /* WMScrollView.m in Sources */,
 				F7BBE3F7041D301D8EB02E996E544253 /* XJBundleResource.m in Sources */,
@@ -837,8 +836,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
