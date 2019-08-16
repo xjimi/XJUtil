@@ -7,8 +7,9 @@
 //
 
 #import "XJViewController.h"
-#import <XJUtil/UIViewController+XJExtension.h>
-#import <XJUtil/XJGradientImageView.h>
+#import "UIViewController+XJExtension.h"
+#import "UIWindow+XJVisible.h"
+#import "UIViewController+XJStatusBar.h"
 
 @interface XJViewController ()
 
@@ -19,14 +20,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [super viewDidAppear:animated];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self setStatusBarHidden:YES animation:UIStatusBarAnimationSlide completion:^{
+            NSLog(@"completion!!");
+        }];
+
+    });
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return [super prefersStatusBarHidden];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleDefault;
 }
 
 @end

@@ -15,7 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) UIStatusBarAnimation statusBarAnimation;
 
-- (void)setStatusBarHidden:(BOOL)hidden animation:(UIStatusBarAnimation)animation;
+- (void)setStatusBarHidden:(BOOL)hidden
+                 animation:(UIStatusBarAnimation)animation
+                completion:(void (^ __nullable)(void))completion;
 
 @end
 

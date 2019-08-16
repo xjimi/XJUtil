@@ -13,13 +13,16 @@ static char const * const kXJStatusBarAnimation = "StatusBarAnimation";
 
 @implementation UIViewController (XJStatusBar)
 
-- (void)setStatusBarHidden:(BOOL)hidden animation:(UIStatusBarAnimation)animation
+- (void)setStatusBarHidden:(BOOL)hidden
+                 animation:(UIStatusBarAnimation)animation
+                completion:(void (^ __nullable)(void))completion
 {
     self.statusBarHidden = hidden;
     self.statusBarAnimation = animation;
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self setNeedsStatusBarAppearanceUpdate];
     } completion:^(BOOL finished) {
+        if (completion) completion();
     }];
 }
 
@@ -33,16 +36,12 @@ static char const * const kXJStatusBarAnimation = "StatusBarAnimation";
     return self.statusBarAnimation;
 }
 
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
 #pragma mark - Setter & Getter Property
 
 - (void)setStatusBarHidden:(BOOL)statusBarHidden
 {
     NSNumber *number = [NSNumber numberWithBool:statusBarHidden];
-    objc_setAssociatedObject(self, &kXJStatusBarHidden, number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, kXJStatusBarHidden, number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BOOL)statusBarHidden
@@ -53,14 +52,14 @@ static char const * const kXJStatusBarAnimation = "StatusBarAnimation";
 
 - (void)setStatusBarAnimation:(UIStatusBarAnimation)statusBarAnimation
 {
-    NSNumber *number = [NSNumber numberWithBool:statusBarAnimation];
-    objc_setAssociatedObject(self, &kXJStatusBarAnimation, number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    NSNumber *number = [NSNumber numberWithInteger:statusBarAnimation];
+    objc_setAssociatedObject(self, kXJStatusBarAnimation, number, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (UIStatusBarAnimation)statusBarAnimation
 {
     NSNumber *number = objc_getAssociatedObject(self, kXJStatusBarAnimation);
-    return [number boolValue];
+    return [number integerValue];
 }
 
 @end
