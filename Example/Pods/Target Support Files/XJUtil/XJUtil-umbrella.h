@@ -28,6 +28,7 @@
 #import "XJCrashProtector.h"
 #import "XJGradientImageView.h"
 #import "XJGradientView.h"
+#import "XJNetworkStatusMonitor.h"
 #import "XJTopWindow.h"
 
 FOUNDATION_EXPORT double XJUtilVersionNumber;

@@ -1,6 +1,6 @@
 {
   "name": "XJUtil",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "summary": "A short description of XJUtil.",
   "homepage": "https://github.com/xjimi/XJUtil",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/xjimi/XJUtil.git",
-    "tag": "0.1.7"
+    "tag": "0.1.8"
   },
   "platforms": {
     "ios": "9.0"
@@ -21,5 +21,10 @@
   "frameworks": [
     "UIKit",
     "Foundation"
-  ]
+  ],
+  "dependencies": {
+    "Reachability": [
+
+    ]
+  }
 }

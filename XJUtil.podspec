@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'XJUtil'
-  s.version          = '0.1.8'
+  s.version          = '0.1.81'
   s.summary          = 'A short description of XJUtil.'
   s.homepage         = 'https://github.com/xjimi/XJUtil'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/xjimi/XJUtil.git', :tag => s.version.to_s }
   s.ios.deployment_target = '9.0'
   s.source_files = 'XJUtil/Classes/**/*'
-  
   s.frameworks = 'UIKit', 'Foundation'
+  s.dependency 'Reachability'
 
   # s.resource_bundles = {
   #   'XJUtil' => ['XJUtil/Assets/*.png']
