@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'XJUtil'
-  s.version          = '0.1.81'
+  s.version          = '0.1.82'
   s.summary          = 'A short description of XJUtil.'
   s.homepage         = 'https://github.com/xjimi/XJUtil'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
