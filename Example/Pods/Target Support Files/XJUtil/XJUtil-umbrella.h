@@ -18,6 +18,7 @@
 #import "UIViewController+XJExtension.h"
 #import "UIViewController+XJStatusBar.h"
 #import "UIWindow+XJVisible.h"
+#import "Definition.h"
 #import "WMPageController.h"
 #import "WMScrollView.h"
 #import "XJBundleResource.h"

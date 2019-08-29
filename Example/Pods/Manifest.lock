@@ -1,6 +1,6 @@
 PODS:
   - Reachability (3.2)
-  - XJUtil (0.1.8):
+  - XJUtil (0.1.83):
     - Reachability
 
 DEPENDENCIES:
@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  XJUtil: cb5894d91a0665cb4e523d5449512558541ba0e7
+  XJUtil: af904060664221b1059898240179ab840ce12313
 
 PODFILE CHECKSUM: 87eda2292d40be848cd91d776bd83e0d6244f4be
 

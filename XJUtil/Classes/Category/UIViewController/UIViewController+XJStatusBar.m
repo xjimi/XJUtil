@@ -19,15 +19,13 @@ static char const * const kXJStatusBarAnimation = "StatusBarAnimation";
 {
     self.statusBarHidden = hidden;
     self.statusBarAnimation = animation;
-    CGFloat statusBarH = [UIApplication sharedApplication].statusBarFrame.size.height;
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
 
         [self setNeedsStatusBarAppearanceUpdate];
 
     } completion:^(BOOL finished) {
 
-        NSTimeInterval time = (statusBarH == 40.0f) ? 0.3f : 0.15f;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(time * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (completion) completion();
         });
 
