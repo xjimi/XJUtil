@@ -1,6 +1,27 @@
 PODS:
+  - FLAnimatedImage (1.0.12)
+  - PINCache (3.0.1-beta.6):
+    - PINCache/Arc-exception-safe (= 3.0.1-beta.6)
+    - PINCache/Core (= 3.0.1-beta.6)
+  - PINCache/Arc-exception-safe (3.0.1-beta.6):
+    - PINCache/Core
+  - PINCache/Core (3.0.1-beta.6):
+    - PINOperation (~> 1.1.0)
+  - PINOperation (1.1.2)
+  - PINRemoteImage (3.0.0-beta.13):
+    - PINRemoteImage/FLAnimatedImage (= 3.0.0-beta.13)
+    - PINRemoteImage/PINCache (= 3.0.0-beta.13)
+  - PINRemoteImage/Core (3.0.0-beta.13):
+    - PINOperation
+  - PINRemoteImage/FLAnimatedImage (3.0.0-beta.13):
+    - FLAnimatedImage (>= 1.0)
+    - PINRemoteImage/Core
+  - PINRemoteImage/PINCache (3.0.0-beta.13):
+    - PINCache (= 3.0.1-beta.6)
+    - PINRemoteImage/Core
   - Reachability (3.2)
   - XJUtil (0.1.83):
+    - PINRemoteImage (<= 3.0.0-beta.13)
     - Reachability
 
 DEPENDENCIES:
@@ -8,6 +29,10 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - FLAnimatedImage
+    - PINCache
+    - PINOperation
+    - PINRemoteImage
     - Reachability
 
 EXTERNAL SOURCES:
@@ -15,8 +40,12 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
+  PINOperation: 24b774353ca248fcf87d67b2d61eef42087c125a
+  PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
-  XJUtil: af904060664221b1059898240179ab840ce12313
+  XJUtil: ec8442bc5f9aca97ae202c68d923a4e65fc564a7
 
 PODFILE CHECKSUM: 87eda2292d40be848cd91d776bd83e0d6244f4be
 

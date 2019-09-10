@@ -25,6 +25,9 @@
   "dependencies": {
     "Reachability": [
 
+    ],
+    "PINRemoteImage": [
+      "<= 3.0.0-beta.13"
     ]
   }
 }

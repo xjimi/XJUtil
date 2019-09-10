@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <PINRemoteImage/PINImageView+PINRemoteImage.h>
 
 typedef NS_ENUM(NSUInteger, XJImagePlaceholderType) {
     XJImagePlaceholderTypeNone,
@@ -19,7 +20,7 @@ typedef NS_ENUM(NSUInteger, XJImagePlaceholderType) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void (^XJImageManagerCompletion)(UIImage *image);
+typedef void (^XJImageManagerResultCompletion)(PINRemoteImageManagerResult *result);
 
 @interface UIImageView (XJImageManager)
 
@@ -34,13 +35,13 @@ typedef void (^XJImageManagerCompletion)(UIImage *image);
 
 - (void)xj_imageWithURL:(NSURL *)url
         placeholderType:(XJImagePlaceholderType)placeholderType
-             completion:(nullable XJImageManagerCompletion)completion;
+             completion:(nullable XJImageManagerResultCompletion)completion;
 
 - (void)xj_imageWithURL:(NSURL *)url
         placeholderType:(XJImagePlaceholderType)placeholderType
        downloadAnimated:(BOOL)downloadAnimated
            cornerRadius:(CGFloat)radius
-             completion:(nullable XJImageManagerCompletion)completion;
+             completion:(nullable XJImageManagerResultCompletion)completion;
 
 @end
 
