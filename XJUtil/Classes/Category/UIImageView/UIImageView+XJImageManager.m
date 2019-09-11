@@ -38,7 +38,7 @@
 
 - (void)xj_imageWithURL:(NSURL *)url
         placeholderType:(XJImagePlaceholderType)placeholderType
-             completion:(nullable XJImageManagerResultCompletion)completion
+             completion:(nullable XJImageManagerCompletion)completion
 {
     [self xj_imageWithURL:url
           placeholderType:placeholderType
@@ -51,7 +51,7 @@
         placeholderType:(XJImagePlaceholderType)placeholderType
        downloadAnimated:(BOOL)downloadAnimated
            cornerRadius:(CGFloat)cornerRadius
-             completion:(nullable XJImageManagerResultCompletion)completion
+             completion:(nullable XJImageManagerCompletion)completion
 {
     self.image = nil;
     __weak typeof(self)weakSelf = self;
@@ -65,7 +65,9 @@
          {
              [weakSelf processDownloadAnimated:downloadAnimated
                              remoteImageResult:result
-                              resultCompletion:completion];
+                              resultCompletion:^(PINRemoteImageManagerResult * _Nonnull result) {
+                                  if (completion) completion(result.image);
+                              }];
 
          }];
     }
@@ -87,7 +89,9 @@
              dispatch_async(dispatch_get_main_queue(), ^{
                  [weakSelf processDownloadAnimated:downloadAnimated
                                  remoteImageResult:result
-                                  resultCompletion:completion];
+                                  resultCompletion:^(PINRemoteImageManagerResult * _Nonnull result) {
+                                      if (completion) completion(result.image);
+                                  }];
              });
 
              return image;

@@ -21,6 +21,7 @@ typedef NS_ENUM(NSUInteger, XJImagePlaceholderType) {
 NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^XJImageManagerResultCompletion)(PINRemoteImageManagerResult *result);
+typedef void (^XJImageManagerCompletion)(UIImage *image);
 
 @interface UIImageView (XJImageManager)
 
@@ -35,13 +36,13 @@ typedef void (^XJImageManagerResultCompletion)(PINRemoteImageManagerResult *resu
 
 - (void)xj_imageWithURL:(NSURL *)url
         placeholderType:(XJImagePlaceholderType)placeholderType
-             completion:(nullable XJImageManagerResultCompletion)completion;
+             completion:(nullable XJImageManagerCompletion)completion;
 
 - (void)xj_imageWithURL:(NSURL *)url
         placeholderType:(XJImagePlaceholderType)placeholderType
        downloadAnimated:(BOOL)downloadAnimated
            cornerRadius:(CGFloat)radius
-             completion:(nullable XJImageManagerResultCompletion)completion;
+             completion:(nullable XJImageManagerCompletion)completion;
 
 @end
 
