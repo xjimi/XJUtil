@@ -1,6 +1,6 @@
 {
   "name": "XJUtil",
-  "version": "0.1.83",
+  "version": "0.1.86",
   "summary": "A short description of XJUtil.",
   "homepage": "https://github.com/xjimi/XJUtil",
   "license": {
@@ -12,7 +12,7 @@
   },
   "source": {
     "git": "https://github.com/xjimi/XJUtil.git",
-    "tag": "0.1.83"
+    "tag": "0.1.86"
   },
   "platforms": {
     "ios": "9.0"
@@ -23,11 +23,8 @@
     "Foundation"
   ],
   "dependencies": {
-    "Reachability": [
-
-    ],
     "PINRemoteImage": [
-      "<= 3.0.0-beta.13"
+      "<= 3.0.0"
     ]
   }
 }

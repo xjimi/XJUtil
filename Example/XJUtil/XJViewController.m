@@ -10,8 +10,9 @@
 #import "UIViewController+XJExtension.h"
 #import "UIWindow+XJVisible.h"
 #import "UIViewController+XJStatusBar.h"
-#import <XJUtil/UIImageView+XJImageManager.h>
+#import "UIImageView+XJImageManager.h"
 #import <PINRemoteImage/PINRemoteImage.h>
+#import <PINRemoteImage/PINAnimatedImageView.h>
 
 @interface XJViewController ()
 
@@ -22,7 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[PINRemoteImageManager sharedImageManager].defaultImageCache removeAllObjects];
+    //[[PINRemoteImageManager sharedImageManager].defaultImageTtlCache removeAllObjects];
 
     UIImageView *imageView = [[UIImageView alloc] init];
     //imageView.backgroundColor = [UIColor lightGrayColor];
@@ -33,7 +34,7 @@
     NSURL *URL = [NSURL URLWithString:@"https://setn.s3-ap-northeast-1.amazonaws.com/public/appServices/images/123_0x_0s_2sss.jpg"];
     [imageView xj_imageWithURL:URL placeholderType:XJImagePlaceholderTypeDefault];
 
-    UIImageView *imageView2 = [[UIImageView alloc] init];
+    PINAnimatedImageView *imageView2 = [[PINAnimatedImageView alloc] init];
     imageView2.contentMode = UIViewContentModeScaleAspectFill;
     imageView2.clipsToBounds = YES;
     CGRect imgRect = imageView.frame;
@@ -41,7 +42,7 @@
     imageView2.frame = imgRect;
     [self.view addSubview:imageView2];
 
-    NSString *url = @"https://attach.setn.com/adsimages/185358_國美晴空-首頁大圖.jpg";
+    NSString *url = @"https://i.pinimg.com/originals/f5/23/f1/f523f141646b613f78566ba964208990.gif";
     [imageView2 xj_imageWithURL:[NSURL URLWithString:url] placeholderType:XJImagePlaceholderTypeNone];
 
 }

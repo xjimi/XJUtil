@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'XJUtil'
-  s.version          = '0.1.85'
+  s.version          = '0.1.86'
   s.summary          = 'A short description of XJUtil.'
   s.homepage         = 'https://github.com/xjimi/XJUtil'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -18,8 +18,7 @@ Pod::Spec.new do |s|
   s.source_files = 'XJUtil/Classes/**/*'
   s.frameworks = 'UIKit', 'Foundation'
   
-  s.dependency 'Reachability'
-  s.dependency 'PINRemoteImage', '<= 3.0.0-beta.13'
+  s.dependency 'PINRemoteImage', '<= 3.0.0'
 
   # s.resource_bundles = {
   #   'XJUtil' => ['XJUtil/Assets/*.png']
